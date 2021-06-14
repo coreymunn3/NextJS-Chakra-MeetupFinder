@@ -1,17 +1,34 @@
-import { Box, Heading, Text, Center, Button, Image } from '@chakra-ui/react';
+import { useState } from 'react';
+import {
+  Box,
+  Heading,
+  Text,
+  Center,
+  Button,
+  Image,
+  Skeleton,
+} from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 const MeetupItem = ({ meetup }) => {
   const { id, image, title, address, description } = meetup;
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleImageLoad = () => setIsLoading(false);
+
   return (
     <Box as='li' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      <Image
-        src={image}
-        alt='meetup image'
-        height={250}
-        w='100%'
-        objectFit='cover'
-      />
+      <Skeleton isLoaded={!isLoading}>
+        <Image
+          src={image}
+          alt='meetup image'
+          height={250}
+          w='100%'
+          objectFit='cover'
+          onLoad={handleImageLoad}
+        />
+      </Skeleton>
+
       <Box p={6}>
         <Heading as='h3' size='lg' fontWeight='medium'>
           {title}
