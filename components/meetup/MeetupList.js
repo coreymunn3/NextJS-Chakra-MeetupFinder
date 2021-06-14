@@ -3,13 +3,7 @@ import MeetupItem from './MeetupItem';
 
 const MeetupList = ({ meetupList }) => {
   return (
-    <Stack
-      as='ul'
-      spacing={4}
-      width={['95%', '90%', '80%']}
-      maxW={800}
-      margin='auto'
-    >
+    <Stack as='ul' spacing={4}>
       {meetupList.map((meetup) => (
         <MeetupItem meetup={meetup} key={meetup.id} />
       ))}
