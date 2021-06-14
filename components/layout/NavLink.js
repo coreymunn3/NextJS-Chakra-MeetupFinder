@@ -1,9 +1,11 @@
-import { Link } from '@chakra-ui/react';
+import { Link, Box } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 const NavLink = ({ children, href }) => {
   return (
     <Link
+      as='li'
+      listStyleType='none'
       borderRadius='md'
       px={2}
       py={1}

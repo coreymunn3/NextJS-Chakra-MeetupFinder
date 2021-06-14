@@ -1,6 +1,6 @@
 const DUMMY_DATA = [
   {
-    id: 1,
+    id: 'm1',
     title: 'First Meetup',
     image:
       'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3289&q=80',
@@ -9,7 +9,7 @@ const DUMMY_DATA = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In neque arcu, laoreet eu sapien non, tristique congue dui. Nulla sit amet est nec nunc suscipit dapibus. Suspendisse eu condimentum ex. Donec molestie ligula augue, et finibus nibh imperdiet vel. Donec sapien arcu, eleifend ultricies consectetur vel, tristique vitae erat. Proin.',
   },
   {
-    id: 2,
+    id: 'm2',
     title: 'Second Meetup',
     image:
       'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3289&q=80',

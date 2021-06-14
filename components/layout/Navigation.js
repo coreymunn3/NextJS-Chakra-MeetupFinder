@@ -9,7 +9,7 @@ const Navigation = () => {
           <Heading size='lg'>Meetups</Heading>
         </Box>
         <Spacer />
-        <HStack spacing={2}>
+        <HStack as='ul' spacing={2}>
           <NavLink href='/'>All Meetups</NavLink>
           <NavLink href='/new-meetup'>New Meetup</NavLink>
         </HStack>

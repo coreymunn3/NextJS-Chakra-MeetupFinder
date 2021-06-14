@@ -1,4 +1,5 @@
 import { Box, Heading, Text, Center, Button } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import Image from 'next/image';
 
 const MeetupItem = ({ meetup }) => {
@@ -16,7 +17,7 @@ const MeetupItem = ({ meetup }) => {
         <Text mt={4}>{description}</Text>
         <Center mt={4}>
           <Button variant='outline' colorScheme='cyan'>
-            See Details
+            <NextLink href={`/${id}`}>See Details</NextLink>
           </Button>
         </Center>
       </Box>
