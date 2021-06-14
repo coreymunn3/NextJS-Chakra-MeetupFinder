@@ -1,12 +1,17 @@
-import { Box, Heading, Text, Center, Button } from '@chakra-ui/react';
+import { Box, Heading, Text, Center, Button, Image } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import Image from 'next/image';
 
 const MeetupItem = ({ meetup }) => {
   const { id, image, title, address, description } = meetup;
   return (
     <Box as='li' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      <img src={image} alt='meetup image' layout='fill' />
+      <Image
+        src={image}
+        alt='meetup image'
+        height={250}
+        w='100%'
+        objectFit='cover'
+      />
       <Box p={6}>
         <Heading as='h3' size='lg' fontWeight='medium'>
           {title}
