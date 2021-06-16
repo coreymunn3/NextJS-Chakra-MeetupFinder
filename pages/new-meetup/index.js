@@ -1,9 +1,11 @@
 import MeetupForm from '../../components/meetup/MeetupForm';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 const NewMeetupPage = () => {
   const toast = useToast();
+  const router = useRouter();
   const handleAddMeetup = async (values, actions) => {
     try {
       const { data } = await axios.post('/api/meetups', values);
@@ -15,6 +17,7 @@ const NewMeetupPage = () => {
         duration: 3000,
       });
       actions.resetForm({});
+      router.push('/');
     } catch (error) {
       console.log(error);
       toast({
