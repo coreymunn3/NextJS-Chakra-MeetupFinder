@@ -77,7 +77,7 @@ const MeetupForm = ({ onAddMeetup }) => {
           disabled={formik.isSubmitting}
           type='submit'
         >
-          Add Meetup
+          {formik.isSubmitting ? 'Just a Moment...' : 'Add Meetup'}
         </Button>
       </VStack>
     </Box>
