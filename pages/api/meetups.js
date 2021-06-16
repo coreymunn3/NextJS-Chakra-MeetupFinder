@@ -28,10 +28,6 @@ const handler = async (req, res) => {
 
     res.status(201).json(result.ops);
   }
-
-  if (req.method === 'GET') {
-    res.json('hello');
-  }
 };
 
 export default handler;

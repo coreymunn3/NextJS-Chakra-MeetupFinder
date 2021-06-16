@@ -1,20 +1,55 @@
+import { ObjectID } from 'mongodb';
 import MeetupDetails from '../../components/meetup/MeetupDetails';
-import DUMMY_DATA from '../../DUMMY_DATA';
+import { connectDB } from '../../lib/db-util';
 
-const MeetupDetailPage = () => {
-  return <MeetupDetails data={DUMMY_DATA[0]} />;
+const MeetupDetailPage = (props) => {
+  return <MeetupDetails data={props.data} />;
 };
 
 export default MeetupDetailPage;
 
-export function getStaticProps(context) {
+export async function getStaticProps(context) {
   const meetupId = context.params.meetupId;
   console.log(meetupId);
-  const data = DUMMY_DATA.find((item) => item.id === meetupId);
-  return { props: { data } };
+  const client = await connectDB();
+  const db = client.db();
+  const meetup = await db
+    .collection('meetups')
+    .findOne({ _id: ObjectID(meetupId) });
+  client.close();
+  // const data = DUMMY_DATA.find((item) => item.id === meetupId);
+  const formattedMeetup = {
+    title: meetup.title,
+    address: meetup.address,
+    image: meetup.image,
+    description: meetup.description,
+    id: meetup._id.toString(),
+  };
+  return {
+    props: {
+      data: formattedMeetup,
+    },
+  };
 }
 
-export function getStaticPaths() {
-  const paths = DUMMY_DATA.map((item) => ({ params: { meetupId: item.id } }));
+export async function getStaticPaths() {
+  // const paths = DUMMY_DATA.map((item) => ({ params: { meetupId: item.id } }));
+  let meetups;
+  try {
+    const client = await connectDB();
+    meetups = await client
+      .db()
+      .collection('meetups')
+      .find({}, { _id: 1 })
+      .toArray();
+    client.close();
+  } catch (error) {
+    console.log(error);
+  }
+
+  const paths = meetups.map((doc) => ({
+    params: { meetupId: doc._id.toString() },
+  }));
+
   return { paths, fallback: false };
 }
