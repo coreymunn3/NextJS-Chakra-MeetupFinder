@@ -39,6 +39,7 @@ export async function getStaticProps(context) {
     props: {
       data: formattedMeetup,
     },
+    revalidate: 30,
   };
 }
 
