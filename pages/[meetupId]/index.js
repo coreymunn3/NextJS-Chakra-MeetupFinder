@@ -61,5 +61,5 @@ export async function getStaticPaths() {
     params: { meetupId: doc._id.toString() },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: 'blocking' };
 }
