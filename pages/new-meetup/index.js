@@ -1,5 +1,7 @@
 import MeetupForm from '../../components/meetup/MeetupForm';
 import axios from 'axios';
+import Head from 'next/head';
+import { Fragment } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
@@ -28,7 +30,18 @@ const NewMeetupPage = () => {
       });
     }
   };
-  return <MeetupForm onAddMeetup={handleAddMeetup} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Add a New Meetup</title>
+        <meta
+          name='description'
+          content='Add your own meetups and create a new network'
+        ></meta>
+      </Head>
+      <MeetupForm onAddMeetup={handleAddMeetup} />
+    </Fragment>
+  );
 };
 
 export default NewMeetupPage;

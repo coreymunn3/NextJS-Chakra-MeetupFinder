@@ -1,9 +1,19 @@
 import { ObjectID } from 'mongodb';
 import MeetupDetails from '../../components/meetup/MeetupDetails';
 import { connectDB } from '../../lib/db-util';
+import { Fragment } from 'react';
+import Head from 'next/head';
 
 const MeetupDetailPage = (props) => {
-  return <MeetupDetails data={props.data} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>{props.data.title}</title>
+        <meta name='description' content={props.data.description}></meta>
+      </Head>
+      <MeetupDetails data={props.data} />
+    </Fragment>
+  );
 };
 
 export default MeetupDetailPage;

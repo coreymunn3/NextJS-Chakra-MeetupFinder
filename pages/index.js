@@ -1,9 +1,21 @@
 import Head from 'next/head';
+import { Fragment } from 'react';
 import MeetupList from '../components/meetup/MeetupList';
 import { connectDB } from '../lib/db-util';
 
 const HomePage = (props) => {
-  return <MeetupList meetupList={props.data} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>NextJS Meetups</title>
+        <meta
+          name='description'
+          content='browse a huge list of active react meetups'
+        ></meta>
+      </Head>
+      <MeetupList meetupList={props.data} />
+    </Fragment>
+  );
 };
 
 export default HomePage;
